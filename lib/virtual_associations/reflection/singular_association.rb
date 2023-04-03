@@ -1,4 +1,4 @@
-module Associationist
+module VirtualAssociations
   module Reflection
     class SingularReflection < ::ActiveRecord::Reflection::HasOneReflection
       def association_class

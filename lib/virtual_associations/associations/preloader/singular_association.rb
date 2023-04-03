@@ -80,7 +80,7 @@ module VirtualAssociations
       def preloader_for(reflection)
         config = reflection.options[:associationist]
         if config
-          Associationist::Associations::Preloader::SingularAssociation
+          VirtualAssociations::Associations::Preloader::SingularAssociation
         else
           super
         end
@@ -100,7 +100,7 @@ module VirtualAssociations
         until branches.empty?
           loaders = branches.flat_map(&:runnable_loaders)
           loaders.each do |loader|
-            if loader.is_a? Associationist::Associations::Preloader::SingularAssociation
+            if loader.is_a? VirtualAssociations::Associations::Preloader::SingularAssociation
             else
               loader.associate_records_from_unscoped(@available_records[loader.klass.base_class])
             end
@@ -114,7 +114,7 @@ module VirtualAssociations
             target_loaders = loaders.reject { |l| future_tables.include?(l.table_name)  }
             target_loaders = loaders if target_loaders.empty?
 
-            non_associationist_loaders = target_loaders.reject{|x| x.is_a? Associationist::Associations::Preloader::SingularAssociation}
+            non_associationist_loaders = target_loaders.reject{|x| x.is_a? VirtualAssociations::Associations::Preloader::SingularAssociation}
             group_and_load_similar(non_associationist_loaders)
             target_loaders.each(&:run)
           end
@@ -134,7 +134,7 @@ module VirtualAssociations
         def preloader_for(reflection, owners, rhs_klass)
           config = reflection.options[:associationist]
           if config
-            Associationist::Associations::Preloader::SingularAssociation
+            VirtualAssociations::Associations::Preloader::SingularAssociation
           else
             super
           end
@@ -143,7 +143,7 @@ module VirtualAssociations
         def preloader_for(reflection, owners)
           config = reflection.options[:associationist]
           if config
-            Associationist::Associations::Preloader::SingularAssociation
+            VirtualAssociations::Associations::Preloader::SingularAssociation
           else
             super
           end
