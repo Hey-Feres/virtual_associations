@@ -2,7 +2,7 @@ module VirtualAssociations
   module Builder
     class SingularAssociation < ::ActiveRecord::Associations::Builder::SingularAssociation
       def self.valid_options(options)
-        super + [:associationist]
+        super + [:virtual_associations]
       end
 
       def self.define_accessors(model, reflection)

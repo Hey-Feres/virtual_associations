@@ -14,7 +14,7 @@ module VirtualAssociations
       end
 
       def config
-        options[:associationist]
+        options[:virtual_associations]
       end
     end
   end

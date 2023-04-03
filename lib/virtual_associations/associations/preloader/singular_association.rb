@@ -78,7 +78,7 @@ module VirtualAssociations
   if ActiveRecord.version >= Gem::Version.new('7.0.0')
     module ActiveRecordPreloaderBranchPatch
       def preloader_for(reflection)
-        config = reflection.options[:associationist]
+        config = reflection.options[:virtual_associations]
         if config
           VirtualAssociations::Associations::Preloader::SingularAssociation
         else
@@ -132,7 +132,7 @@ module VirtualAssociations
       case
       when ActiveRecord.version < Gem::Version.new('5.2.0')
         def preloader_for(reflection, owners, rhs_klass)
-          config = reflection.options[:associationist]
+          config = reflection.options[:virtual_associations]
           if config
             VirtualAssociations::Associations::Preloader::SingularAssociation
           else
@@ -141,7 +141,7 @@ module VirtualAssociations
         end
       when ActiveRecord.version >= Gem::Version.new('5.2.0')
         def preloader_for(reflection, owners)
-          config = reflection.options[:associationist]
+          config = reflection.options[:virtual_associations]
           if config
             VirtualAssociations::Associations::Preloader::SingularAssociation
           else

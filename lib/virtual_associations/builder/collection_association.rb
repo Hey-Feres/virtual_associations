@@ -6,7 +6,7 @@ module VirtualAssociations
       end
 
       def self.valid_options(options)
-        super + [:associationist]
+        super + [:virtual_associations]
       end
 
       def self.valid_dependent_options

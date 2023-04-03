@@ -8,7 +8,7 @@ class Property < ActiveRecord::Base
   belongs_to :product
 
   include VirtualAssociations::Mixin.new(
-    name: :associationist_product,
+    name: :virtual_associations_product,
     type: :singular,
     scope: -> property { Product.where(id: property.product_id) }
   )
